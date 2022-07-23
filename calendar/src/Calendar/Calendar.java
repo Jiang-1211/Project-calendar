@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
  * @author tom13
  */
 public class Calendar extends javax.swing.JFrame {
-
+    //先設定好最上面的星期
     String[] colname = {
         "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"
     };
@@ -49,7 +49,7 @@ public class Calendar extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel1.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("標楷體", 0, 24)); // NOI18N
         jLabel1.setText("年分:");
 
         txtyear.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
@@ -59,7 +59,7 @@ public class Calendar extends javax.swing.JFrame {
             }
         });
 
-        btn減.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        btn減.setFont(new java.awt.Font("標楷體", 0, 24)); // NOI18N
         btn減.setText("減");
         btn減.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,7 +67,7 @@ public class Calendar extends javax.swing.JFrame {
             }
         });
 
-        btn加.setFont(new java.awt.Font("新細明體", 0, 24)); // NOI18N
+        btn加.setFont(new java.awt.Font("標楷體", 0, 24)); // NOI18N
         btn加.setText("加");
         btn加.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,11 +117,14 @@ public class Calendar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //主要程式段
     private void txtyearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtyearActionPerformed
+        //從輸入框取得文字，並將其轉為int
         year = Integer.parseInt(txtyear.getText());
         Object[] day = new Object[7];
         Object[] mon = new Object[7];
         Object[] space = new Object[7];
+        //呼叫函式找出當年的第一天
         int n = firstWeekDayOfYear(year);
         for (int i = 1; i <= 12; i++) {
             mon[0] = i + " 月";
@@ -129,6 +132,7 @@ public class Calendar extends javax.swing.JFrame {
             for (int j = 0; j < 7; j++) {
                 day[j] = " ";
             }
+            //呼叫函式取得當月有幾天
             for (int j = 1; j <= getMonthOfDays(i, year); j++) {
                 day[n] = j;
                 n++;
@@ -147,6 +151,7 @@ public class Calendar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtyearActionPerformed
 
+    //增加年份並重新顯示
     private void btn加ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn加ActionPerformed
         year = year + 1;
         txtyear.setText(String.valueOf(year));
@@ -154,6 +159,7 @@ public class Calendar extends javax.swing.JFrame {
         txtyearActionPerformed(evt);
     }//GEN-LAST:event_btn加ActionPerformed
 
+    //減少年份並重新顯示
     private void btn減ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn減ActionPerformed
         year = year - 1;
         txtyear.setText(String.valueOf(year));
@@ -161,10 +167,12 @@ public class Calendar extends javax.swing.JFrame {
         txtyearActionPerformed(evt);
     }//GEN-LAST:event_btn減ActionPerformed
 
+    //檢查是否為閏年
     public static boolean isLeapYear(int year) {
         return ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0));
     }
 
+    //找出當年的第一天
     public static int firstWeekDayOfYear(int year) {
         long day = year * 365;
         for (int i = 1; i < year; i++) {
@@ -174,7 +182,8 @@ public class Calendar extends javax.swing.JFrame {
         }
         return (int) day % 7;
     }
-
+    
+    //回傳當月有幾天
     public static int getMonthOfDays(int month, int year) {
         switch (month) {
             case 1:
