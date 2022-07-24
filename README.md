@@ -14,7 +14,8 @@
 ## 預期解法:  
 學習控制layout，在使用者放大視窗後，物件可以等比例放大  
   
-### 註:.jar檔位於<https://github.com/Jiang-1211/Project-calendar/tree/main/calendar/dist>
+### 註:.jar檔位於<https://github.com/Jiang-1211/Project-calendar/tree/main/calendar/dist>  
+### 註:.java檔位於<https://github.com/Jiang-1211/Project-calendar/tree/main/calendar/src/Calendar>
 ## 視窗程式截圖  
 ![image](image/視窗程式截圖.png)  
   
